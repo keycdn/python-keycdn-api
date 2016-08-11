@@ -2,12 +2,12 @@ import keycdn
 
 
 def run_test():
-    api = keycdn.Api('sk_prod_Y2MzN2RkZjQ1MzgxNTRkNzU2')
+    keycdn = keycdn.Api('sk_prod_Y2MzN2RkZjQ1MzgxNTRkNzU2')
 
     # returns dict object
-    print(api.get('zones.json'))
+    print(keycdn.get('zones.json'))
 
-    result = api.post('zones/37861.json', {'gzip': 'disabled'})
+    result = keycdn.post('zones/37861.json', {'gzip': 'disabled'})
     if result['status'] == 'success':
         print('Successfully renamed zone')
     else:
