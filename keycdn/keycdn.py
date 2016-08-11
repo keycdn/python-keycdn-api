@@ -74,6 +74,6 @@ class Api(object):
         elif method == 'DELETE':
             r = requests.delete(url, auth=(self.__api_key, ''), data=params)
         else:
-            raise ValueError('Only the methods GET, POST, PUT, DELETE are supported.')
+            raise NotImplementedError('Only the methods GET, POST, PUT, DELETE are supported.')
 
         return r.json()
