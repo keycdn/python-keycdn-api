@@ -14,23 +14,23 @@ pip install keycdn
 import keycdn
 
 ...
-keycdn = keycdn.Api('<your_api_key>')
+api = keycdn.Api('<your_api_key>')
 
 ```
 
 ### Get all zones
 ```python
-keycdn.get('zones.json')
+api.get('zones.json')
 ```
 
 ### Get a specific zone
 ```python
-keycdn.post('zones/<zoneId>.json')
+api.post('zones/<zoneId>.json')
 ```
 
 ### Purge zone cache
 ```python
-keycdn.get('zones/purge/<zoneId>.json')
+api.get('zones/purge/<zoneId>.json')
 ```
 
 
