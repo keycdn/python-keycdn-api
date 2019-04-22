@@ -2,67 +2,67 @@ import requests
 import json
 
 
-# KeyCDN Python API Client
 class Api(object):
+    """KeyCDN Python API Client"""
 
-    # Constructor takes API Key as param
     def __init__(self, ApiKey):
         self.__api_key = ApiKey
         self.__endpoint = 'https://api.keycdn.com'
 
-    # setter for ApiKey
     def set_api_key(self, ApiKey):
+        """setter for ApiKey"""
         self.__api_key = ApiKey
 
-    # getter for ApiKey
     def get_api_key(self):
+        """getter for ApiKey"""
         return self.__api_key
 
-    # setter for endpoint
     def set_endpoint(self, endpoint):
+        """setter for endpoint"""
         self.__endpoint = endpoint
 
-    # getter for endpoint
     def get_endpoint(self):
+        """getter for endpoint"""
         return self.__endpoint
 
-    '''
-        call String
-        params Dict
-        returns Dict
-    '''
     def get(self, call, params={}):
+        """
+            call String
+            params Dict
+            returns Dict
+        """
         return self.__execute(call, 'GET', params)
 
-    '''
-        call String
-        params Dict
-        returns Dict
-    '''
     def post(self, call, params={}):
+        """
+            call String
+            params Dict
+            returns Dict
+        """
         return self.__execute(call, 'POST', params)
 
-    '''
-        call String
-        params Dict
-        returns Dict
-    '''
+
     def put(self, call, params={}):
+        """
+            call String
+            params Dict
+            returns Dict
+        """
         return self.__execute(call, 'PUT', params)
 
-    '''
-        call String
-        params Dict
-        returns Dict
-    '''
     def delete(self, call, params={}):
+        """
+            call String
+            params Dict
+            returns Dict
+        """
         return self.__execute(call, 'DELETE', params)
 
-    '''
-        Raises Connection and ValueError
-        Returns a Dict
-    '''
     def __execute(self, call, method, params):
+        """
+            Raises Connection and ValueError
+            Returns a Dict
+        """
         url = '{}/{}'.format(self.__endpoint, call)
         r = None
         if method == 'GET':
