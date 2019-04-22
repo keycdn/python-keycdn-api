@@ -6,9 +6,10 @@ import json
 class Api(object):
 
     # Constructor takes API Key as param
-    def __init__(self, ApiKey):
+    def __init__(self, ApiKey, session=None):
         self.__api_key = ApiKey
         self.__endpoint = 'https://api.keycdn.com'
+        self.session = requests
 
     # setter for ApiKey
     def set_api_key(self, ApiKey):
@@ -66,13 +67,13 @@ class Api(object):
         url = '{}/{}'.format(self.__endpoint, call)
         r = None
         if method == 'GET':
-            r = requests.get(url, auth=(self.__api_key, ''), data=params)
+            r = self.session.get(url, auth=(self.__api_key, ''), data=params)
         elif method == 'POST':
-            r = requests.post(url, auth=(self.__api_key, ''), data=params)
+            r = self.session.post(url, auth=(self.__api_key, ''), data=params)
         elif method == 'PUT':
-            r = requests.put(url, auth=(self.__api_key, ''), data=params)
+            r = self.session.put(url, auth=(self.__api_key, ''), data=params)
         elif method == 'DELETE':
-            r = requests.delete(url, auth=(self.__api_key, ''), data=params)
+            r = self.session.delete(url, auth=(self.__api_key, ''), data=params)
         else:
             raise ValueError('Only the methods GET, POST, PUT, DELETE are supported.')
 
