@@ -2,70 +2,97 @@ import requests
 import json
 
 
-# KeyCDN Python API Client
 class Api(object):
+    """KeyCDN Python API Client"""
 
-    # Constructor takes API Key as param
-    def __init__(self, ApiKey, session=None):
+    def __init__(self, ApiKey):
         self.__api_key = ApiKey
         self.__endpoint = 'https://api.keycdn.com'
         self.session = requests
 
-    # setter for ApiKey
     def set_api_key(self, ApiKey):
+        """setter for ApiKey
+
+        Args:
+            ApiKey (str): The API key.
+        """
         self.__api_key = ApiKey
 
-    # getter for ApiKey
     def get_api_key(self):
+        """getter for ApiKey
+
+        Returns:
+            str: The current API key
+        """
         return self.__api_key
 
-    # setter for endpoint
     def set_endpoint(self, endpoint):
+        """setter for endpoint
+
+        Args:
+            ApiKey (str): The API key.
+        """
         self.__endpoint = endpoint
 
-    # getter for endpoint
     def get_endpoint(self):
+        """getter for endpoint
+
+        Returns:
+            str: The current API key
+        """
         return self.__endpoint
 
-    '''
-        call String
-        params Dict
-        returns Dict
-    '''
     def get(self, call, params={}):
+        """Make a GET call.
+
+        Args:
+            call (str): API endpoint
+            params (dict): Additional parameters.
+
+        Returns:
+            dict: Result of API call.
+        """
         return self.__execute(call, 'GET', params)
 
-    '''
-        call String
-        params Dict
-        returns Dict
-    '''
     def post(self, call, params={}):
+        """Make a POST call.
+
+        Args:
+            call (str): API endpoint
+            params (dict): Additional parameters.
+
+        Returns:
+            dict: Result of API call.
+        """
         return self.__execute(call, 'POST', params)
 
-    '''
-        call String
-        params Dict
-        returns Dict
-    '''
+
     def put(self, call, params={}):
+        """Make a PUT call.
+
+        Args:
+            call (str): API endpoint
+            params (dict): Additional parameters.
+
+        Returns:
+            dict: Result of API call.
+        """
         return self.__execute(call, 'PUT', params)
 
-    '''
-        call String
-        params Dict
-        returns Dict
-    '''
     def delete(self, call, params={}):
+        """Make a DELETE call.
+
+        Args:
+            call (str): API endpoint
+            params (dict): Additional parameters.
+
+        Returns:
+            dict: Result of API call.
+        """
         return self.__execute(call, 'DELETE', params)
 
-    '''
-        Raises Connection and ValueError
-        Returns a Dict
-    '''
     def __execute(self, call, method, params):
         url = '{}/{}'.format(self.__endpoint, call)
-        r = None
         if method == 'GET':
             r = self.session.get(url, auth=(self.__api_key, ''), data=params)
         elif method == 'POST':
