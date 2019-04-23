@@ -8,6 +8,7 @@ class Api(object):
     def __init__(self, ApiKey):
         self.__api_key = ApiKey
         self.__endpoint = 'https://api.keycdn.com'
+        self.session = requests
 
     def set_api_key(self, ApiKey):
         """setter for ApiKey
@@ -93,13 +94,13 @@ class Api(object):
     def __execute(self, call, method, params):
         url = '{}/{}'.format(self.__endpoint, call)
         if method == 'GET':
-            r = requests.get(url, auth=(self.__api_key, ''), data=params)
+            r = self.session.get(url, auth=(self.__api_key, ''), data=params)
         elif method == 'POST':
-            r = requests.post(url, auth=(self.__api_key, ''), data=params)
+            r = self.session.post(url, auth=(self.__api_key, ''), data=params)
         elif method == 'PUT':
-            r = requests.put(url, auth=(self.__api_key, ''), data=params)
+            r = self.session.put(url, auth=(self.__api_key, ''), data=params)
         elif method == 'DELETE':
-            r = requests.delete(url, auth=(self.__api_key, ''), data=params)
+            r = self.session.delete(url, auth=(self.__api_key, ''), json=params)
         else:
             raise ValueError('Only the methods GET, POST, PUT, DELETE are supported.')
 
