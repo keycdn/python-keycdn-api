@@ -72,7 +72,7 @@ class Api(object):
         elif method == 'PUT':
             r = requests.put(url, auth=(self.__api_key, ''), data=params)
         elif method == 'DELETE':
-            r = requests.delete(url, auth=(self.__api_key, ''), data=params)
+            r = requests.delete(url, auth=(self.__api_key, ''), json=params)
         else:
             raise ValueError('Only the methods GET, POST, PUT, DELETE are supported.')
 
