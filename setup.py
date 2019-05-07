@@ -4,7 +4,7 @@ from distutils.core import setup
 setup(
   name = 'keycdn',
   packages = ['keycdn'],
-  version = '0.4.2',
+  version = '0.4.3',
   description = 'A Python REST Client for KeyCDN API',
   long_description = open('README.md').read(),
   long_description_content_type = 'text/markdown',
@@ -14,5 +14,8 @@ setup(
   classifiers = [
     'Programming Language :: Python :: 2.7',
     'Programming Language :: Python :: 3'
+  ],
+  install_requires=[
+    'requests>=2.11.1',
   ],
 )
