@@ -1,1 +1,1 @@
-from keycdn import *
+from .keycdn import *
