@@ -9,10 +9,10 @@ ENDPOINT = os.environ.get('KEYCDN_ENDPOINT', 'https://api.keycdn.com')
 class Api(object):
     """KeyCDN Python API Client"""
 
-    def __init__(self, ApiKey, endpoint=ENDPOINT):
+    def __init__(self, ApiKey, session=None):
         self.__api_key = ApiKey
-        self.__endpoint = endpoint
-        self.session = requests
+        self.__endpoint = 'https://api.keycdn.com'
+        self.session = session or requests
 
     def set_api_key(self, ApiKey):
         """setter for ApiKey
