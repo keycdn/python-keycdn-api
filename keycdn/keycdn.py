@@ -5,10 +5,10 @@ import json
 class Api(object):
     """KeyCDN Python API Client"""
 
-    def __init__(self, ApiKey):
+    def __init__(self, ApiKey, session=None):
         self.__api_key = ApiKey
         self.__endpoint = 'https://api.keycdn.com'
-        self.session = requests
+        self.session = session or requests
 
     def set_api_key(self, ApiKey):
         """setter for ApiKey
