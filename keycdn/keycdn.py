@@ -104,4 +104,9 @@ class Api(object):
         else:
             raise ValueError('Only the methods GET, POST, PUT, DELETE are supported.')
 
+        # If the response isn't successful, it's no guarantee that the
+        # response was content-type 'application/json'. Better to fail on
+        # this rather than a JSONDecodeError later.
+        r.raise_for_status()
+
         return r.json()
