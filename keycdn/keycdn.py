@@ -1,13 +1,17 @@
+import os
+
 import requests
 import json
+
+ENDPOINT = os.environ.get('KEYCDN_ENDPOINT', 'https://api.keycdn.com')
 
 
 class Api(object):
     """KeyCDN Python API Client"""
 
-    def __init__(self, ApiKey):
+    def __init__(self, ApiKey, endpoint=ENDPOINT):
         self.__api_key = ApiKey
-        self.__endpoint = 'https://api.keycdn.com'
+        self.__endpoint = endpoint
         self.session = requests
 
     def set_api_key(self, ApiKey):
