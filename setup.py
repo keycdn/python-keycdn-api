@@ -18,4 +18,5 @@ setup(
   install_requires=[
     'requests>=2.11.1',
   ],
+  extras_require = {'dev': ['tox', 'twine']},
 )

@@ -1,5 +1,9 @@
+import os
+
 import requests
 import json
+
+ENDPOINT = os.environ.get('KEYCDN_ENDPOINT', 'https://api.keycdn.com')
 
 
 class Api(object):
@@ -103,5 +107,10 @@ class Api(object):
             r = self.session.delete(url, auth=(self.__api_key, ''), json=params)
         else:
             raise ValueError('Only the methods GET, POST, PUT, DELETE are supported.')
+
+        # If the response isn't successful, it's no guarantee that the
+        # response was content-type 'application/json'. Better to fail on
+        # this rather than a JSONDecodeError later.
+        r.raise_for_status()
 
         return r.json()
